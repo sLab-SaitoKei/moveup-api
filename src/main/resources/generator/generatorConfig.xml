@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry
+            location="D:/Maven/repository/mysql/mysql-connector-java/5.1.48/mysql-connector-java-5.1.48.jar" />
+    <context id="context1">
+
+        <property name="autoDelimitKeywords" value="true"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <commentGenerator>
+            <property name="suppressAllComments" value="false" />
+            <property name="suppressDate" value="true" />
+        </commentGenerator>
+
+        <!--     JDBCの設定です (1) -->
+        <jdbcConnection
+                driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql://localhost:3306/moveup?useUnicode=true&amp;characterEncoding=utf8"
+                userId="root"
+                password="mingren222"
+        />
+
+        <!--     自動生成するエンティティの設定です (2) -->
+        <javaModelGenerator
+                targetPackage="jp.co.vermore.entity"
+                targetProject="src/main/java/"
+        />
+        <sqlMapGenerator
+                targetPackage="jp.co.vermore.mapper"
+                targetProject="src/main/java/"
+        />
+        <javaClientGenerator
+                targetPackage="jp.co.vermore.mapper"
+                targetProject="src/main/java/"
+                type="XMLMAPPER"
+        />
+
+        <!--     生成対象のテーブルです（3) -->
+        <table schema="vermore" tableName="chen" delimitIdentifiers="true"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+    </context>
+</generatorConfiguration>

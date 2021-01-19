@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.vermore.mapper.DemoMapper">
+    <resultMap id="DemoResult" type="jp.co.vermore.entity.Demo">
+        <result column="id" property="id" />
+        <result column="name" property="name" />
+    </resultMap>
+    <select id="getDemo" resultMap="DemoResult" parameterType="int">
+        select id, name
+        from demo
+        where id = #{id}
+    </select>
+    <select id="getDemoAll" resultMap="DemoResult">
+        select id, name
+        from demo;
+    </select>
+    <select id="getDemoByEntity" resultMap="DemoResult">
+        select id, name
+        from demo
+        where id = #{id}
+    </select>
+    <insert id="insertDemo" parameterType="String">
+        insert into demo(name) values (#{name})
+    </insert>
+    <delete id="deleteDemo" parameterType="int">
+        delete from demo where id = #{id}
+    </delete>
+    <update id="updateDemo">
+        update demo set name = #{name} where id = #{id}
+    </update>
+</mapper>

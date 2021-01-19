@@ -1,0 +1,291 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.ico" type="image/ico"/>
+
+    <title>JapanMoveUpWestAdmin</title>
+
+    <!-- Bootstrap -->
+    <link href="/static/admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="/static/admin/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="/static/admin/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="/static/admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
+    <!-- bootstrap-progressbar -->
+    <link href="/static/admin/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="/static/admin/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="/static/admin/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="/static/admin/build/css/custom.min.css" rel="stylesheet">
+    <style>
+        .validatorError {
+            color: red;
+        }
+    </style>
+</head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+
+        <!-- sidebar menu -->
+        <jsp:include page="sidebar.jsp"/>
+        <!-- /sidebar menu -->
+
+        <!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu">
+                <nav>
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="">
+                            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
+                               aria-expanded="false">
+                                <span style="color: silver">Admin管理者&nbsp;&nbsp;</span>岡山 太郎
+                                <span class=" fa fa-angle-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                <li><a href="javascript:;">Help</a></li>
+                                <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>応募管理</h3>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>応募基本情報
+                                </h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <br/>
+                                <form:form id="" modelAttribute="form"
+                                           class="form-horizontal form-label-left">
+                                <div class="item form-group">
+                                    <div>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >ユーザーID <span
+                                                class="required">:</span>
+                                        </label>
+                                        <div class="col-md-2 col-sm-6 col-xs-12">
+                                            <label  class="form-control"style="border: none;"><c:out value="${form.person.userId}"></c:out></label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="control-label col-md-1 col-sm-3 col-xs-12">名前<span
+                                                class="required">:</span></label>
+                                        <div class="col-md-2 col-sm-6 col-xs-12">
+                                            <div class="radio">
+                                                <label class="form-control"style="border: none;"><c:out value="${form.person.firstName}    ${form.person.secondName}" /></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="item form-group">
+                                    <div>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >年齢 <span
+                                                class="required">:</span>
+                                        </label>
+                                        <div class="col-md-2 col-sm-6 col-xs-12">
+                                            <label  class="form-control"style="border: none;"><c:out value="${form.age}"></c:out></label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="control-label col-md-1 col-sm-3 col-xs-12">メールアドレス<span
+                                                class="required">:</span></label>
+                                        <div class="col-md-2 col-sm-6 col-xs-12">
+                                            <div class="radio">
+                                                <label class="form-control"style="border: none;"><c:out value="${form.person.mail}"></c:out></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                    <div class="item form-group">
+                                        <div>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" >性別 <span
+                                                    class="required">:</span>
+                                            </label>
+                                            <div class="col-md-2 col-sm-6 col-xs-12">
+                                                <label  class="form-control"style="border: none;">
+                                                    <c:if test="${form.person.gender == 1}">男性</c:if>
+                                                    <c:if test="${form.person.gender == 2}">女性</c:if>
+                                                    <c:if test="${form.person.gender == 0}">不明</c:if>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="control-label col-md-1 col-sm-3 col-xs-12">職業<span
+                                                    class="required">:</span></label>
+                                            <div class="col-md-2 col-sm-6 col-xs-12">
+                                                <div class="radio">
+                                                    <label class="form-control"style="border: none;"><c:out value="${form.career}"></c:out></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" >タイトル <span
+                                            class="required">:</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <label  class="form-control"style="border: none;"><c:out value="${form.news.title}"></c:out></label>
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" >内容 <span
+                                            class="required">:</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <label class="form-control"style="border: none;height: 300px;"><c:out value="${form.entry.content}"></c:out></label>
+                                    </div>
+                                </div>
+                                </form:form>
+                                <div class="ln_solid"></div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-md-offset-8">
+                                        <a class="btn btn-primary" href="/admin/entry/list/" style="width: 100px;">確認</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /page content -->
+
+    <!-- footer content -->
+    <footer>
+        <div class="pull-right">
+            Japan Move Up West Admin
+        </div>
+        <div class="clearfix"></div>
+    </footer>
+    <!-- /footer content -->
+</div>
+</div>
+<div id="newsLoading" style="display: none" class="loading">
+    <div class="loading-text">Processing...</div>
+</div>
+
+<!-- jQuery -->
+<script src="/static/admin/vendors/jquery/dist/jquery.min.js"></script>
+<!-- jquery validator -->
+<script src="/static/admin/vendors/jquery-validation-1.17.0/dist/jquery.validate.min.js"></script>
+<script src="/static/admin/vendors/jquery-validation-1.17.0/dist/localization/messages_ja.min.js"></script>
+<!-- Bootstrap -->
+<script src="/static/admin/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="/static/admin/vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="/static/admin/vendors/nprogress/nprogress.js"></script>
+<!-- Chart.js -->
+<script src="/static/admin/vendors/Chart.js/dist/Chart.min.js"></script>
+<!-- gauge.js -->
+<script src="/static/admin/vendors/gauge.js/dist/gauge.min.js"></script>
+<!-- bootstrap-progressbar -->
+<script src="/static/admin/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+<!-- iCheck -->
+<script src="/static/admin/vendors/iCheck/icheck.min.js"></script>
+<!-- Skycons -->
+<script src="/static/admin/vendors/skycons/skycons.js"></script>
+<!-- Flot -->
+<script src="/static/admin/vendors/Flot/jquery.flot.js"></script>
+<script src="/static/admin/vendors/Flot/jquery.flot.pie.js"></script>
+<script src="/static/admin/vendors/Flot/jquery.flot.time.js"></script>
+<script src="/static/admin/vendors/Flot/jquery.flot.stack.js"></script>
+<script src="/static/admin/vendors/Flot/jquery.flot.resize.js"></script>
+<!-- Flot plugins -->
+<script src="/static/admin/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+<script src="/static/admin/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+<script src="/static/admin/vendors/flot.curvedlines/curvedLines.js"></script>
+<!-- DateJS -->
+<script src="/static/admin/vendors/DateJS/build/date.js"></script>
+<!-- JQVMap -->
+<script src="/static/admin/vendors/jqvmap/dist/jquery.vmap.js"></script>
+<script src="/static/admin/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+<script src="/static/admin/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="/static/admin/vendors/moment/min/moment.min.js"></script>
+<script src="/static/admin/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="/static/admin/build/js/custom.min.js"></script>
+
+<script>
+    var $userForm = $("#userForm");
+    $userForm.validate({
+        submitHandler: function(form) {
+            $('#newsLoading').show();
+            $(form).submit();
+        },
+        errorClass : "validatorError",
+        rules : {
+            date :{
+                required: true
+            },
+            sortScore :{
+                digits: true,
+                required: true,
+                maxlength: 4
+            },
+            title :{
+                required: true,
+                maxlength: 60
+            },
+            excerpt :{
+                required: true,
+                maxlength: 255
+            },
+            detail :{
+                required: true,
+                maxlength: 2048
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

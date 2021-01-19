@@ -1,0 +1,583 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+.table_Title {
+    font-weight: bolder;
+    margin-top: 30px;
+    font-size: 22px;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+}/*Login Title*/
+.table_Height {
+    height: 50px;
+    background-color: #edeeef;
+    font-weight: normal;
+    font-size: 13px;
+}/*Table Height && Table FontSize*/
+.table_List {
+    margin-top: 50px;
+    border: 1px solid #cccccc;
+    font-size: 14px;
+    table-layout: fixed;word-wrap:break-word;
+}/*Table board*/
+.table_icon {
+    background-color: #F23B26;
+    color: white;
+    padding-left: 14px;
+    padding-right: 14px;
+    font-size: 8px;
+    font-weight: normal;
+    float: right;
+}/*Des with red or blue bg*/
+.table_icon_small{
+    display: none;
+}/*Des '*' with red or blue bg*/
+.form-control {
+    border-radius: 0px;
+}/*InputTextField*/
+.form-control_firstSmall{
+    width: 180px;
+}
+.phone_mail_Label{
+    display: none;
+}
+.pc_mail_Label{
+    display: block;
+}
+.table_icon1{
+    background-color: #F23B26;
+    color: white;
+    padding-left: 13px;
+    padding-right: 13px;
+    font-size: 10px;
+    font-weight: normal;
+    float: right;
+    margin-top: -25px;
+}
+
+.dropbtn1 {
+    color: black;
+    font-size: 12px;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+    width: 120px;
+    height: 30px;
+    outline: none;
+    padding-left: 8px;
+    margin-left: 33px;
+    text-align: left;
+    font-weight: bolder;
+}/* dropBtn (Work Select)*/
+.arrow_Img1 {
+    margin-left: 25px;
+    width: 10px;
+    height: 8px;
+}/*dropBtn IMG Work Select)*/
+
+.dropdown-content a {
+    color: black;
+    text-decoration: none;
+    padding: 12px 15px;
+    display: block;
+} /* DropMenu Style */
+.radio {
+    margin-left: 16px;
+}/*selectBtn (Male or Female)*/
+.confirmBtn {
+    color: white;
+    background-color: #00a7dd;
+    font-size: 13px;
+    padding-left: 35px;
+    padding-right: 35px;
+    height: 45px;
+    margin-top: 50px;
+    font-weight: bolder;
+    letter-spacing: 4px;
+}/*Confirm Btn*/
+
+.CodeBtn {
+    font-weight: bold;
+    font-size: 15px;
+    margin-left: 15px;
+    margin-right: 13px;
+    display: inline-block;
+}/*  〒 Btn*/
+.lineBtn{
+    display: inline-block;
+    margin-left: 2px;
+}/* '-' Btn*/
+.select_year{
+    border:1px solid #cccccc;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    outline: none;
+    background-color: white;
+    border-radius: 0px;
+    margin-left: 16px !important;
+    width: 80px;
+    font-weight: bolder;
+    font-size: 14px;
+    height: 35px;
+}
+.select_Name{
+    margin-left:6px;
+    font-weight: bolder;
+}
+.arrow_Img {
+    width: 10px;
+    height: 7px;
+    margin-left: -22px;
+}/*dropBtn IMG*/
+.select_Month{
+    border:1px solid #cccccc;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    outline: none;
+    background-color: white;
+    border-radius: 0px;
+    margin-left: 10px;
+    width: 50px;
+    font-weight: bolder;
+    height: 35px;
+}
+.select_Work{
+    border:1px solid #cccccc;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    outline: none;
+    background-color: white;
+    border-radius: 0px;
+    margin-left: 16px !important;
+    width: 160px;
+    font-weight: bolder;
+    font-size: 13px;
+    height: 35px;
+}
+.waring_Label{
+    text-align: left;
+    font-weight: bolder;
+    font-size: 12px;
+}
+.error{
+    margin-top: 15px;
+}
+.defult_Label{
+    width: 393px;
+    margin-left: 10px;
+    font-weight: normal;
+}
+.defult_Label_normal{
+    font-weight: normal;
+    margin-left: -350px;
+}
+.defult_sex_Label{
+    margin-left: -25px;
+    font-weight: normal;
+}
+.defult_work_Label{
+    margin-left: 10px;
+    font-weight: normal;
+}
+.code_Label {
+    font-weight: normal;
+}
+.code_logo_Label{
+    margin-left: 10px;
+    margin-right: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.adress_Label{
+    margin-left: -5px;
+    font-weight: normal;
+}
+.mail_Label{
+    margin-left: -5px;
+    font-weight: normal;
+}
+.password_Label{
+    margin-left: -5px;
+    font-weight: normal;
+}
+.defult_time_Label{
+    margin-left: 6px;
+    font-weight: normal;
+}
+.hide_frame{
+    height: 0px;
+    width: 0px;
+}
+.nickname_Label{
+    margin-left: -5px;
+    font-weight: normal;
+}
+
+.footer_font {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.bootstrap-select>.dropdown-toggle {
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+}
+
+.bootstrap-select.btn-group .dropdown-toggle .caret {
+    display: none;
+    width: 0px;
+}
+
+.form-control-mail {
+    width: 201px;
+    font-size: 12px;
+    padding: 0 5px 0 5px;
+}
+
+
+@media (max-width: 768px) {
+    .img-responsive {
+        margin-left: 40px;
+    }/*logo adjust screen*/
+    .table_Title {
+        margin-left: 80px;
+        margin-top: 25px;
+        font-size: 14px;
+    }/*title*/
+    .table_List {
+        margin-top: 20px;
+        margin-left: 5px;
+        width: 372px;
+    }/*Table Height*/
+    .table_Height {
+        font-size:12px;
+        width: 140px;
+    }/*Table List Height*/
+    .table_icon {
+        padding-left: 4px;
+        padding-right: 4px;
+        font-size: 10px;
+    }/*Des with red or blue bg*/
+    .phone_mail_Label{
+        display: inline-block;
+    }
+    .pc_mail_Label{
+        display: none;
+    }
+    .table_icon1{
+        padding-left: 4px;
+        padding-right: 4px;
+        font-size: 10px;
+        margin-top: 2px;
+    }
+    .table_icon_small{
+        display: none;
+    }/*Des '*'with red or blue bg*/
+
+    .form-control {
+        width: 201px;
+        font-size: 12px;
+    }/*InputTextField*/
+    .form-control_phone{
+        width: 110px;
+    }
+    .form-control_small{
+        margin-top: 10px;
+    }
+    .form-control_lastSmall{
+        margin-bottom: 3px;
+    }
+    .form-control_firstSmall{
+        margin-top: 10px;
+    }
+    .dropbtn {
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }/*drop Btn*/
+    .dropbtn_small {
+        width: 90px;
+        padding-left: 60px;
+        margin-bottom: 8px;
+    }/*drop Btn (Month && Day)*/
+    .dropbtn1 {
+        width: 110px;
+        margin-left: 13px;
+    }/*drop Btn (work Select)*/
+    .arrow_Img1 {
+        margin-left: 15px;
+        width: 10px;
+        height: 8px;
+    }/*drop IMG (work Select)*/
+    .radio {
+        margin-left: 15px;
+        font-size: 12px;
+    }/*select Btn(Male && Female)*/
+    .form-inline {
+        margin-left: 15px;
+    }/*InputTextField(Mail && NickName && Password)*/
+    .confirmBtn {
+        font-size: 13px;
+        margin-top: 30px;
+        margin-left: 20px;
+        padding-left: 25px;
+        padding-right:25px;
+    }/*Confirm Btn*/
+    .CodeBtn {
+        margin-left: 0px;
+        margin-right: 0px;
+        display: none;
+    }/*〒 Btn*/
+    .lineBtn{
+        display: none;
+    }/* '-' Btn*/
+
+    .select_year{
+        margin-top: 10px;
+        /*padding-left: 10px;*/
+        width: 55px;
+        margin-bottom: 10px;
+    }
+    .select_Month{
+        margin-top: 10px;
+        margin-left: 5px;
+        width: 35px;
+        /*padding-left: 8px;*/
+        margin-bottom: 10px;
+    }
+    .select_Month_Small{
+        margin-bottom: 10px;
+    }
+    .select_Work{
+        margin-top: 10px;
+        width: 117px;
+        margin-bottom: 10px;
+    }
+    .defult_Label{
+        width: 110px;
+        margin-top: 10px;
+    }
+    .defult_Label_normal{
+        margin-top: 10px;
+        float: right;
+        padding-right: 40px;
+    }
+
+    .defult_sex_Label{
+        margin-left: -22px;
+    }
+    .defult_work_Label{
+        margin-left: 13px;
+    }
+    .defult_time_Label{
+        margin-left: 3px;
+    }
+    .select_Name{
+        margin-left: 3px;
+    }
+    .code_logo_Label{
+        margin-top: 30px;
+        margin-left: -2px;
+    }
+    .code_Label{
+        margin-top: 5px;
+    }
+    .adress_Label{
+        font-weight: normal;
+        margin-left: -2px;
+    }
+    .defult_time_Label{
+        margin-left: 6px;
+        font-weight: normal;
+    }
+    .mail_Label{
+        width: 110px;
+        margin-left: -2px;
+        font-weight: normal;
+        width: 250px;
+    }
+    .password_Label{
+        width: 150px;
+        margin-left: 0px;
+    }
+    .nickname_Label{
+        margin-left: 0px;
+    }
+
+
+}
+@media (max-width: 400px) {
+    .img-responsive {
+        margin-left: 40px;
+    }/*logo adjust screen*/
+    .table_Title {
+        margin-left: 80px;
+        margin-top: 25px;
+        font-size: 14px;
+    }/*title*/
+    .table_List {
+        margin-top: 20px;
+        margin-left: 5px;
+        width: 335px;
+    }/*Table Height*/
+    .table_Height {
+        font-size:12px;
+        width: 120px;
+    }/*Table List Height*/
+    .table_icon {
+        padding-left: 4px;
+        padding-right: 4px;
+        font-size: 6px;
+        display: none;
+    }/*Des with red or blue bg*/
+    .phone_mail_Label{
+        display: inline-block;
+    }
+    .pc_mail_Label{
+        display: none;
+    }
+    .table_icon1{
+        display: none;
+    }
+    .table_icon_small{
+        color: red;
+        display: inline-block;
+    }
+    .form-control {
+        width: 190px;
+        font-size: 12px;
+    }/*InputTextField*/
+
+    .form-control-mail {
+        width: 190px;
+        font-size: 12px;
+        padding: 0 5px 0 5px;
+    }
+    .form-control_phone{
+        width: 100px;
+    }
+    .form-control_small{
+        margin-top: 10px;
+    }
+    .form-control_lastSmall{
+        margin-bottom: 3px;
+    }
+    .form-control_firstSmall{
+        margin-top: 10px;
+    }
+    .dropbtn {
+        margin-top: 8px;
+        margin-bottom: 9px;
+    }/*drop Btn*/
+    .dropbtn_small {
+        width: 90px;
+        padding-left: 60px;
+        margin-bottom: 8px;
+    }/*drop Btn (Month && Day)*/
+    .dropbtn1 {
+        width: 110px;
+        margin-left: 13px;
+    }/*drop Btn (work Select)*/
+    .arrow_Img1 {
+        margin-left: 15px;
+        width: 10px;
+        height: 8px;
+    }/*drop IMG (work Select)*/
+    .radio {
+        margin-left: 15px;
+        font-size: 12px;
+    }/*select Btn(Male && Female)*/
+    .form-inline {
+        margin-left: 15px;
+    }/*InputTextField(Mail && NickName && Password)*/
+    .confirmBtn {
+        font-size: 13px;
+        margin-top: 30px;
+        margin-left: 20px;
+        padding-left: 25px;
+        padding-right:25px;
+    }/*Confirm Btn*/
+    .CodeBtn {
+        margin-left: 0px;
+        margin-right: 0px;
+        display: none;
+    }/*〒 Btn*/
+    .lineBtn{
+        display: none;
+    }/* '-' Btn*/
+
+    .select_year{
+        font-size:12px;
+        margin-top: 10px;
+        /*padding-left: 6px;*/
+        width: 50px;
+    }
+    .select_Month{
+        font-size:12px;
+        width: 35px;
+        margin-top: 10px;
+        margin-left: 2px;
+        /*padding-left: 10px;*/
+    }
+    .select_Month_Small{
+        margin-bottom: 10px;
+    }
+    .select_Work{
+        margin-top: 10px;
+        width: 117px;
+        margin-bottom: 10px;
+        font-size: 10px;
+    }
+    .defult_Label{
+        width: 110px;
+        margin-top: 10px;
+    }
+    .defult_Label_normal{
+        margin-top: 10px;
+        float: right;
+        padding-right: 40px;
+    }
+    .defult_sex_Label{
+        margin-left: -22px;
+    }
+    .defult_work_Label{
+        margin-left: 13px;
+    }
+    .defult_time_Label{
+        margin-left: 3px;
+    }
+    .select_Name{
+        margin-left: 0px;
+    }
+    .code_logo_Label{
+        margin-top: 30px;
+        margin-left: 0px;
+    }
+    .code_Label{
+        margin-top: 15px;
+    }
+    .adress_Label{
+        font-weight: normal;
+        margin-left: -2px;
+    }
+    .defult_time_Label{
+        margin-left: 6px;
+        font-weight: normal;
+    }
+    .mail_Label{
+        font-weight: normal;
+        width: 250px;
+    }
+
+    .password_Label{
+        width: 110px;
+        margin-left: 0px;
+    }
+    .nickname_Label{
+        margin-left: 0px;
+        font-weight: normal;
+    }
+}

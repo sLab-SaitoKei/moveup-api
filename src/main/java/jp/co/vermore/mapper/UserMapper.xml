@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.vermore.mapper.UserMapper">
+    <resultMap id="UserResult" type="jp.co.vermore.entity.User">
+        <result column="id" property="id"/>
+        <result column="status" property="status"/>
+        <result column="uuid" property="uuid"/>
+        <result column="expire_datetime" property="expireDatetime"/>
+        <result column="create_datetime" property="createDatetime"/>
+        <result column="update_datetime" property="updateDatetime"/>
+        <result column="del_flg" property="delFlg"/>
+        <result column="note" property="note"/>
+    </resultMap>
+
+    <resultMap id="AuthDetailResult" type="jp.co.vermore.entity.AuthDetail">
+        <result column="foreign_type" property="foreignType" jdbcType="INTEGER" />
+        <result column="uuid" property="uuid" jdbcType="VARCHAR" />
+        <result column="mail" property="mail" jdbcType="VARCHAR" />
+        <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+        <result column="gender" property="gender" jdbcType="INTEGER" />
+        <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+        <result column="create_datetime" property="createDatetime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <insert id="insertUser">
+        insert into user(
+        status,
+        uuid,
+        expire_datetime,
+        create_datetime,
+        update_datetime,
+        del_flg,
+        note
+        ) values (
+        #{status},
+        #{uuid},
+        #{expireDatetime},
+        #{createDatetime},
+        #{updateDatetime},
+        #{delFlg},
+        #{note}
+        )
+        <selectKey resultType="long" keyProperty="id" order="AFTER">
+            select @@IDENTITY
+        </selectKey>
+    </insert>
+
+    <update id="updateUserWithdraw">
+        update user set status = 4 where id = #{id}
+    </update>
+
+    <select id="getUserById" resultMap="UserResult" parameterType="long">
+        select *
+        from user
+        where id = #{id} and del_flg = 0
+    </select>
+
+    <select id="getUserByUuid" resultMap="UserResult" parameterType="String">
+        select *
+        from user
+        where uuid = #{param1}
+    </select>
+
+    <select id="count" resultType="java.lang.Long">
+        select count(id)
+        from user
+        where del_flg = 0;
+    </select>
+
+    <select id="getUserIdListByIdList" resultType="java.lang.Long">
+        select id
+        from user
+        where del_flg = 0 and uuid in
+        <foreach collection="list" item="ent" separator="," open="(" close=")">
+            #{ent}
+        </foreach>
+    </select>
+
+    <select id="getUserIdList" resultType="java.lang.Long">
+        select id
+        from user
+        where del_flg = 0
+    </select>
+
+    <select id="getUuidList" resultType="String">
+        select uuid
+        from user
+        where del_flg = 0
+    </select>
+
+
+    <select id="getAdminAll" resultType="jp.co.vermore.entity.Customer">
+        SELECT
+            user.id,
+            user.uuid,
+            user.status,
+            user.create_datetime,
+            user_foreign.foreign_id,
+            user_foreign.foreign_type,
+            person.nickname,
+            person.birthday,
+            person.gender,
+            person.first_name,
+            person.second_name,
+            person.first_name_kana,
+            person.second_name_kana,
+            person.area,
+            person.thumbnail_url,
+            person.career,
+            person.zipcode,
+            person.address
+        FROM
+            user
+        LEFT JOIN user_foreign ON user_foreign.user_id = user.id
+        LEFT JOIN person ON person.user_id = user.id
+        order by user.id desc
+        ;
+    </select>
+
+    <select id="getAdminByUserId" resultType="jp.co.vermore.entity.Customer" parameterType="long">
+        SELECT
+            user.id,
+            user.uuid,
+            user.status,
+            user.create_datetime,
+            user_foreign.foreign_id,
+            user_foreign.foreign_type,
+            person.nickname,
+            person.birthday,
+            person.gender,
+            person.mail,
+            person.first_name,
+            person.second_name,
+            person.first_name_kana,
+            person.second_name_kana,
+            person.area,
+            person.thumbnail_url,
+            person.career,
+            person.zipcode,
+            person.address
+        FROM
+        user
+        LEFT JOIN user_foreign ON user_foreign.user_id = user.id
+        LEFT JOIN person ON person.user_id = user.id
+        where user.id=#{id}
+        order by user.id desc;
+
+    </select>
+
+    <select id="getCustomerAllByCondition" parameterType="jp.co.vermore.form.admin.CustomerListForm" resultMap="AuthDetailResult">
+        SELECT
+        user.id,
+        user.uuid,
+        user.create_datetime,
+        user_foreign.foreign_type,
+        person.nickname,
+        person.mail,
+        person.gender,
+        person.birthday
+        FROM
+        user
+        LEFT JOIN user_foreign ON user_foreign.user_id = user.id
+        LEFT JOIN person ON person.user_id = user.id
+        where user.del_flg = 0
+        <if test="foreignType != null and foreignType != 9" >
+            and user_foreign.foreign_type = #{foreignType}
+        </if>
+        <if test="uuid != null and uuid != ''">
+            and user.uuid = #{uuid}
+        </if>
+        <if test="mail != null and mail != ''" >
+            and person.mail like '%${mail}%'
+        </if>
+        <if test="gender != null and gender != 9" >
+            and person.gender = #{gender}
+        </if>
+        <if test="birthdayFrom != null">
+            and date_format(person.birthday,'%Y-%m-%d') &gt;=date_format(#{birthdayFrom},'%Y-%m-%d')
+        </if>
+        <if test="birthdayTo != null">
+            and date_format(person.birthday,'%Y-%m-%d') &lt;=date_format(#{birthdayTo},'%Y-%m-%d')
+        </if>
+        <if test="createDatetimeFrom != null">
+            and date_format(user.create_datetime,'%Y-%m-%d') &gt;=date_format(#{createDatetimeFrom},'%Y-%m-%d')
+        </if>
+        <if test="createDatetimeTo != null">
+            and date_format(user.create_datetime,'%Y-%m-%d') &lt;=date_format(#{createDatetimeTo},'%Y-%m-%d')
+        </if>
+        order by ${orderStatement}
+        LIMIT #{length,jdbcType=INTEGER} OFFSET #{start,jdbcType=INTEGER};
+    </select>
+
+    <select id="getCustomerCountByCondition" parameterType="jp.co.vermore.form.admin.NewsListForm" resultType="int">
+        select count(1) as totalCount
+        from
+        (
+        SELECT
+        user.uuid,
+        user.create_datetime,
+        user_foreign.foreign_type,
+        person.mail,
+        person.nickname,
+        person.gender,
+        person.birthday
+        FROM
+        user
+        LEFT JOIN user_foreign ON user_foreign.user_id = user.id
+        LEFT JOIN person ON person.user_id = user.id
+        where user.del_flg = 0
+        <if test="foreignType != null and foreignType != 9" >
+            and user_foreign.foreign_type = #{foreignType}
+        </if>
+        <if test="mail != null and mail != ''" >
+            and person.mail like '%${mail}%'
+        </if>
+        <if test="gender != null and gender != 9" >
+            and person.gender = #{gender}
+        </if>
+        <if test="birthdayFrom != null">
+            and date_format(person.birthday,'%Y-%m-%d') &gt;=date_format(#{birthdayFrom},'%Y-%m-%d')
+        </if>
+        <if test="birthdayTo != null">
+            and date_format(person.birthday,'%Y-%m-%d') &lt;=date_format(#{birthdayTo},'%Y-%m-%d')
+        </if>
+        <if test="createDatetimeFrom != null">
+            and date_format(user.create_datetime,'%Y-%m-%d') &gt;=date_format(#{createDatetimeFrom},'%Y-%m-%d')
+        </if>
+        <if test="createDatetimeTo != null">
+            and date_format(user.create_datetime,'%Y-%m-%d') &lt;=date_format(#{createDatetimeTo},'%Y-%m-%d')
+        </if>
+        ) as wk_tbl
+    </select>
+
+    <select id="getCustomerCount" resultType="int">
+        select count(id) as totalCount
+        from user
+        where del_flg = 0;
+    </select>
+
+</mapper>

@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jp.co.vermore.mapper.ShopNowgoMapper" >
+  <resultMap id="BaseResultMap" type="jp.co.vermore.entity.ShopNowgo" >
+
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="category" property="category" jdbcType="TINYINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="pic_url1" property="picUrl1" jdbcType="VARCHAR" />
+    <result column="desc" property="desc" jdbcType="VARCHAR" />
+    <result column="publish_start" property="publishStart" jdbcType="TIMESTAMP" />
+    <result column="publish_end" property="publishEnd" jdbcType="TIMESTAMP" />
+    <result column="create_datetime" property="createDatetime" jdbcType="TIMESTAMP" />
+    <result column="update_datetime" property="updateDatetime" jdbcType="TIMESTAMP" />
+    <result column="del_flg" property="delFlg" jdbcType="BIT" />
+    <result column="note" property="note" jdbcType="VARCHAR" />
+  </resultMap>
+    <sql id="Example_Where_Clause" >
+
+        <where >
+            <foreach collection="oredCriteria" item="criteria" separator="or" >
+                <if test="criteria.valid" >
+                    <trim prefix="(" suffix=")" prefixOverrides="and" >
+                        <foreach collection="criteria.criteria" item="criterion" >
+                            <choose >
+                                <when test="criterion.noValue" >
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue" >
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue" >
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue" >
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause" >
+
+        <where >
+            <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+                <if test="criteria.valid" >
+                    <trim prefix="(" suffix=")" prefixOverrides="and" >
+                        <foreach collection="criteria.criteria" item="criterion" >
+                            <choose >
+                                <when test="criterion.noValue" >
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue" >
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue" >
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue" >
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+  <sql id="Base_Column_List" >
+    id, shop_id, category, title, pic_url1, `desc`, publish_start, publish_end, create_datetime,
+    update_datetime, del_flg, note
+  </sql>
+
+  <select id="getShopNowgoAll"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from shop_nowgo
+    where
+    <!--publish_start > DATE_SUB(CURDATE(),INTERVAL 0 DAY)
+    and publish_end > CURDATE()
+    and  -->
+    del_flg = 0
+    order by update_datetime desc
+    limit 10 offset 0
+  </select>
+
+  <select id="getShopNowgoList"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from shop_nowgo
+    where shop_id in
+    <foreach collection="list" item="ent" separator="," open="(" close=")">
+      #{ent}
+    </foreach>
+    AND del_flg = 0
+    ORDER BY update_datetime desc
+  </select>
+
+  <select id="getShopNowgo"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from shop_nowgo
+    where del_flg = 0
+    and publish_start &lt; #{param1}
+    and publish_end &gt;= #{param2}
+    LIMIT #{param3} OFFSET #{param4};
+  </select>
+
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="jp.co.vermore.entity.ShopNowgo" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from shop_nowgo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+
+  <select id="getShopNowgoByShopId" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from shop_nowgo
+    where shop_id = #{shopId}
+    AND del_flg = 0
+  </select>
+
+  <select id="getShopNowgoById" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from shop_nowgo
+    where id = #{id}
+    AND del_flg = 0
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from shop_nowgo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <delete id="deleteByExample" parameterType="jp.co.vermore.entity.ShopNowgo" >
+    delete from shop_nowgo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+
+  <select id="getShopNowgoListForNotify" resultMap="BaseResultMap"  >
+    select
+    <include refid="Base_Column_List" />
+    from shop_nowgo
+    where update_datetime &gt;= #{param1}
+    and del_flg = 0
+    order by update_datetime;
+  </select>
+
+  <select id="getShopNowgoForInvalid"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from shop_nowgo
+    where  del_flg = 0
+    and (update_datetime &lt;  #{param1}
+    or update_datetime &gt;=  #{param2})
+  </select>
+
+  <select id="getShopNowgoForValid"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from shop_nowgo
+    where  del_flg = 0
+    and update_datetime &lt; #{param1}
+    and update_datetime &gt;=  #{param2}
+  </select>
+
+  <insert id="insert" parameterType="jp.co.vermore.entity.ShopNowgo" >
+    insert into shop_nowgo (id, shop_id, category,
+      title, pic_url1, `desc`,
+      publish_start, publish_end, create_datetime,
+      update_datetime, del_flg, note
+      )
+    values (#{id,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{category,jdbcType=TINYINT},
+      #{title,jdbcType=VARCHAR}, #{picUrl1,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR},
+      #{publishStart,jdbcType=TIMESTAMP}, #{publishEnd,jdbcType=TIMESTAMP}, #{createDatetime,jdbcType=TIMESTAMP},
+      #{updateDatetime,jdbcType=TIMESTAMP}, #{delFlg,jdbcType=BIT}, #{note,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="jp.co.vermore.entity.ShopNowgo" useGeneratedKeys="true"    keyProperty="id">
+
+    insert into shop_nowgo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="category != null" >
+        category,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="picUrl1 != null" >
+        pic_url1,
+      </if>
+      <if test="desc != null" >
+        `desc`,
+      </if>
+      <if test="publishStart != null" >
+        publish_start,
+      </if>
+      <if test="publishEnd != null" >
+        publish_end,
+      </if>
+      <if test="createDatetime != null" >
+        create_datetime,
+      </if>
+      <if test="updateDatetime != null" >
+        update_datetime,
+      </if>
+      <if test="delFlg != null" >
+        del_flg,
+      </if>
+      <if test="note != null" >
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="category != null" >
+        #{category,jdbcType=TINYINT},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl1 != null" >
+        #{picUrl1,jdbcType=VARCHAR},
+      </if>
+      <if test="desc != null" >
+        #{desc,jdbcType=VARCHAR},
+      </if>
+      <if test="publishStart != null" >
+        #{publishStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publishEnd != null" >
+        #{publishEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDatetime != null" >
+        #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDatetime != null" >
+        #{updateDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlg != null" >
+        #{delFlg,jdbcType=BIT},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="countByExample" parameterType="jp.co.vermore.entity.ShopNowgo" resultType="java.lang.Integer" >
+    select count(1) from shop_nowgo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+
+  <update id="updateByExampleSelective" parameterType="map" >
+    update shop_nowgo
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.shopId != null" >
+        shop_id = #{record.shopId,jdbcType=INTEGER},
+      </if>
+      <if test="record.category != null" >
+        category = #{record.category,jdbcType=TINYINT},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.picUrl1 != null" >
+        pic_url1 = #{record.picUrl1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.desc != null" >
+        desc = #{record.desc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.publishStart != null" >
+        publish_start = #{record.publishStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.publishEnd != null" >
+        publish_end = #{record.publishEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createDatetime != null" >
+        create_datetime = #{record.createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateDatetime != null" >
+        update_datetime = #{record.updateDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.delFlg != null" >
+        del_flg = #{record.delFlg,jdbcType=BIT},
+      </if>
+      <if test="record.note != null" >
+        note = #{record.note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+
+  <update id="updateByExample" parameterType="map" >
+    update shop_nowgo
+    set id = #{record.id,jdbcType=INTEGER},
+      shop_id = #{record.shopId,jdbcType=INTEGER},
+      category = #{record.category,jdbcType=TINYINT},
+      title = #{record.title,jdbcType=VARCHAR},
+      pic_url1 = #{record.picUrl1,jdbcType=VARCHAR},
+      desc = #{record.desc,jdbcType=VARCHAR},
+      publish_start = #{record.publishStart,jdbcType=TIMESTAMP},
+      publish_end = #{record.publishEnd,jdbcType=TIMESTAMP},
+      create_datetime = #{record.createDatetime,jdbcType=TIMESTAMP},
+      update_datetime = #{record.updateDatetime,jdbcType=TIMESTAMP},
+      del_flg = #{record.delFlg,jdbcType=BIT},
+      note = #{record.note,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+
+  <update id="updateShopNowgo" parameterType="jp.co.vermore.entity.ShopNowgo" useGeneratedKeys="true"    keyProperty="id">
+    update shop_nowgo
+    <set >
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="category != null" >
+        category = #{category,jdbcType=TINYINT},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl1 != null" >
+        pic_url1 = #{picUrl1,jdbcType=VARCHAR},
+      </if>
+      <if test="desc != null" >
+        `desc` = #{desc,jdbcType=VARCHAR},
+      </if>
+      <if test="publishStart != null" >
+        publish_start = #{publishStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publishEnd != null" >
+        publish_end = #{publishEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDatetime != null" >
+        create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDatetime != null" >
+        update_datetime = #{updateDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlg != null" >
+        del_flg = #{delFlg,jdbcType=BIT},
+      </if>
+      <if test="note != null" >
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="jp.co.vermore.entity.ShopNowgo" >
+    update shop_nowgo
+    set shop_id = #{shopId,jdbcType=INTEGER},
+      category = #{category,jdbcType=TINYINT},
+      title = #{title,jdbcType=VARCHAR},
+      pic_url1 = #{picUrl1,jdbcType=VARCHAR},
+      desc = #{desc,jdbcType=VARCHAR},
+      publish_start = #{publishStart,jdbcType=TIMESTAMP},
+      publish_end = #{publishEnd,jdbcType=TIMESTAMP},
+      create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
+      update_datetime = #{updateDatetime,jdbcType=TIMESTAMP},
+      del_flg = #{delFlg,jdbcType=BIT},
+      note = #{note,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

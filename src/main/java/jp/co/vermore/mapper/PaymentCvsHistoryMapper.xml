@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jp.co.vermore.mapper.PaymentCvsHistoryMapper" >
+  <resultMap id="PaymentCvsResult" type="jp.co.vermore.entity.PaymentCvsHistory" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="amount" property="amount" jdbcType="INTEGER" />
+    <result column="access_id" property="accessId" jdbcType="VARCHAR" />
+    <result column="access_pass" property="accessPass" jdbcType="VARCHAR" />
+    <result column="payment_status" property="paymentStatus" jdbcType="INTEGER" />
+    <result column="convenience" property="convenience" jdbcType="VARCHAR" />
+    <result column="conf_no" property="confNo" jdbcType="VARCHAR" />
+    <result column="receipt_no" property="receiptNo" jdbcType="VARCHAR" />
+    <result column="receipt_url" property="receiptUrl" jdbcType="VARCHAR" />
+    <result column="Payment_term" property="paymentTerm" jdbcType="VARCHAR" />
+    <result column="tran_date" property="tranDate" jdbcType="VARCHAR" />
+    <result column="check_string" property="checkString" jdbcType="VARCHAR" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="create_datetime" property="createDatetime" jdbcType="TIMESTAMP" />
+    <result column="update_datetime" property="updateDatetime" jdbcType="TIMESTAMP" />
+    <result column="del_flg" property="delFlg" jdbcType="BIT" />
+    <result column="note" property="note" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, goods_id, user_id, amount, access_id, access_pass, payment_status, convenience, conf_no, receipt_no,
+    receipt_url, Payment_term, tran_date, check_string, order_id, create_datetime, update_datetime,
+    del_flg, note
+  </sql>
+
+  <insert id="insertSelective" parameterType="jp.co.vermore.entity.PaymentCvsHistory" >
+    insert into payment_cvs_history
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="accessId != null" >
+        access_id,
+      </if>
+      <if test="accessPass != null" >
+        access_pass,
+      </if>
+      <if test="paymentStatus != null" >
+        payment_status,
+      </if>
+      <if test="convenience != null" >
+        convenience,
+      </if>
+      <if test="confNo != null" >
+        conf_no,
+      </if>
+      <if test="receiptNo != null" >
+        receipt_no,
+      </if>
+      <if test="receiptUrl != null" >
+        receipt_url,
+      </if>
+      <if test="paymentTerm != null" >
+        Payment_term,
+      </if>
+      <if test="tranDate != null" >
+        tran_date,
+      </if>
+      <if test="checkString != null" >
+        check_string,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="createDatetime != null" >
+        create_datetime,
+      </if>
+      <if test="updateDatetime != null" >
+        update_datetime,
+      </if>
+      <if test="delFlg != null" >
+        del_flg,
+      </if>
+      <if test="note != null" >
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="accessId != null" >
+        #{accessId,jdbcType=VARCHAR},
+      </if>
+      <if test="accessPass != null" >
+        #{accessPass,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentStatus != null" >
+        #{paymentStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="convenience != null" >
+        #{convenience,jdbcType=VARCHAR},
+      </if>
+      <if test="confNo != null" >
+        #{confNo,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptNo != null" >
+        #{receiptNo,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptUrl != null" >
+        #{receiptUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentTerm != null" >
+        #{paymentTerm,jdbcType=VARCHAR},
+      </if>
+      <if test="tranDate != null" >
+        #{tranDate,jdbcType=VARCHAR},
+      </if>
+      <if test="checkString != null" >
+        #{checkString,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDatetime != null" >
+        #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDatetime != null" >
+        #{updateDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlg != null" >
+        #{delFlg,jdbcType=BIT},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByOrderId" parameterType="jp.co.vermore.entity.PaymentCvsHistory" >
+
+    update payment_cvs_history
+    <set >
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="accessId != null" >
+        access_id = #{accessId,jdbcType=VARCHAR},
+      </if>
+      <if test="accessPass != null" >
+        access_pass = #{accessPass,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentStatus != null" >
+        payment_status = #{paymentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="convenience != null" >
+        convenience = #{convenience,jdbcType=VARCHAR},
+      </if>
+      <if test="confNo != null" >
+        conf_no = #{confNo,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptNo != null" >
+        receipt_no = #{receiptNo,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptUrl != null" >
+        receipt_url = #{receiptUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentTerm != null" >
+        payment_term = #{paymentTerm,jdbcType=VARCHAR},
+      </if>
+      <if test="tranDate != null" >
+        tran_date = #{tranDate,jdbcType=VARCHAR},
+      </if>
+      <if test="checkString != null" >
+        check_string = #{checkString,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDatetime != null" >
+        create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDatetime != null" >
+        update_datetime = #{updateDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlg != null" >
+        del_flg = #{delFlg,jdbcType=BIT},
+      </if>
+      <if test="note != null" >
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </update>
+
+  <select id="getPaymentCvsHistoryByOrderId" resultMap="PaymentCvsResult">
+    select
+    <include refid="Base_Column_List" />
+    from payment_cvs_history
+    where del_flg = 0
+    and payment_status = #{paymentStatus}
+  </select>
+
+</mapper>
