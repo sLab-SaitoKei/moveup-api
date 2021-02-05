@@ -10,8 +10,8 @@ MoveUp API & admin project.
 
 ### What we use ###
 * ## **java8.0**
-* spring 4.3
-* mysql 8.0.22
+* spring 3.3
+* mysql
 
 ### How to install ###
 * Import as maven project
@@ -26,9 +26,9 @@ MoveUp API & admin project.
 ### How to user MyBatis generator ###
 Fix generatorConfig.xml to make sure your mysql connector is exist.
 
-Add maven run like this.
-Working directory: /Users/xieyoujun/project/moveup-api
-Command line: mybatis-generator:generate -e
+Add maven run like this.  
+Working directory: /Users/xieyoujun/project/moveup-api  
+Command line: mybatis-generator:generate -e  
 Also you can see this: http://zhige.me/2017/04/13/2017/201704/mybatis-generator/
 
 ### Source comment ###

@@ -1,3 +1,4 @@
+
 package jp.co.vermore.service;
 
 import com.amazonaws.auth.*;

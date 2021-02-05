@@ -34,10 +34,10 @@
                 targetPackage="jp.co.vermore.mapper"
                 targetProject="src/main/java/"
                 type="XMLMAPPER"
-        />
+        /
 
         <!--     生成対象のテーブルです（3) -->
-        <table schema="vermore" tableName="chen" delimitIdentifiers="true"
+        <table schema="vermore" tableName="*" delimitIdentifiers="true"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
