@@ -10,8 +10,8 @@ MoveUp API & admin project.
 
 ### What we use ###
 * ## **java8.0**
-* spring 3.3
-* mysql
+* spring 4.3
+* mysql8
 
 ### How to install ###
 * Import as maven project
