@@ -178,6 +178,11 @@
     update pic set del_flg = #{delFlg} where item_id = #{itemId} and item_type = #{itemType}
   </delete>
 
+  <!--20210317 楊追加-->
+  <delete id="deleteReportPicUrl">
+    update pic set del_flg = #{delFlg} where item_id = #{itemId} and item_type = #{itemType}
+  </delete>
+
   <select id="getStudioUrl" resultMap="PicResult">
     select
     <include refid="Base_Column_List" />

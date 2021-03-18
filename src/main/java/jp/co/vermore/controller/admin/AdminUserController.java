@@ -65,6 +65,7 @@ public class AdminUserController extends BaseController {
         // get admin user
         AdminUser adminUser = adminUserService.getAdminUserByLoginNameAndPassword(form.getUsername(), StringUtil.sha256(form.getPassword()));
 
+
         if (adminUser == null) {
             model.addAttribute("error", "user or password error!");
             model.addAttribute("loginForm", new LoginForm());

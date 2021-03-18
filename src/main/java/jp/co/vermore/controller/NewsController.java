@@ -53,6 +53,7 @@ public class NewsController extends BaseController {
     @Value(value = "${hosturl}")
     private String hosturl;
 
+    //eg: http://localhost:8081/moveup_war/api/news/list/0/1/0/
     @RequestMapping(value = "/api/news/list/{type}/{limit}/{offset}/", method = RequestMethod.GET)
     @ResponseBody
     public JsonObject getNewsList(@PathVariable int type,@PathVariable int limit, @PathVariable int offset) {
@@ -67,6 +68,7 @@ public class NewsController extends BaseController {
         return jsonObject;
     }
 
+    //eg:http://localhost:8081/moveup_war/api/news/list/0/1/1/0/
     @RequestMapping(value = "/api/news/list/{type1}/{type2}/{limit}/{offset}/", method = RequestMethod.GET)
     @ResponseBody
     public JsonObject getNewsEventList(@PathVariable int type1,@PathVariable int type2,@PathVariable int limit, @PathVariable int offset) {
@@ -80,6 +82,7 @@ public class NewsController extends BaseController {
         return jsonObject;
     }
 
+    //eg:http://localhost:8081/moveup_war/api/news/detail/4hIZRgPJFu/
     @RequestMapping(value = "/api/news/detail/{uuid}/", method = RequestMethod.GET)
     @ResponseBody
     public JsonObject getNewsDetailList(@PathVariable String uuid) {
@@ -171,6 +174,7 @@ public class NewsController extends BaseController {
     }
 
     // News detail for sns
+    //eg:http://localhost:8081/moveup_war/sns/newsDetail/4hIZRgPJFu/
     @RequestMapping(value = "/sns/newsDetail/{uuid}/", method = RequestMethod.GET)
     public Object getNewsSNSDetail(@PathVariable String uuid, Model model, HttpServletRequest hsr) {
 
@@ -201,6 +205,7 @@ public class NewsController extends BaseController {
     }
 
     // News detail for sns
+    //eg:http://localhost:8081/moveup_war/api/sns/newsDetail/app/4hIZRgPJFu/
     @RequestMapping(value = "/api/sns/newsDetail/app/{uuid}/", method = RequestMethod.GET)
     @ResponseBody
     public JsonObject getNewsDetailSNSForApp(@PathVariable String uuid) {

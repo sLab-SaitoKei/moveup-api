@@ -210,6 +210,20 @@ public class PicService {
         return count;
     }
 
+    /**
+     * 20210317 楊追加
+     * @param newsId
+     * @param type
+     * @return
+     */
+    public int deleteReportPicUrl(Long newsId, int type) {
+        Pic pic = new Pic();
+        pic.setItemId(newsId);
+        pic.setItemType((byte)type);
+        pic.setDelFlg(Boolean.TRUE);
+        int count = picMapper.deleteReportPicUrl(pic);
+        return count;
+    }
 
     public Pic getStudioUrl(int id) {
         Pic pic = picMapper.getStudioUrl(id);

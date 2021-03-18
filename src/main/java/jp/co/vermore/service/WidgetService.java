@@ -125,6 +125,27 @@ public class WidgetService {
         return category;
     }
 
+    /**
+     * 楊20210316レポート機能追加
+     * @param reportTypeNum
+     * @return
+     */
+    public String getReportType(int reportTypeNum) {
+        String category = "";
+        if (reportTypeNum == Constant.REPORT_TYPE.UNKNOW) {
+            category = "不明";
+        } else if (reportTypeNum == Constant.REPORT_TYPE.MOVEUP) {
+            category = "MOVEUP";
+        } else if (reportTypeNum == Constant.REPORT_TYPE.EVENT) {
+            category = "EVENT";
+        } else if (reportTypeNum == Constant.REPORT_TYPE.REPORT) {
+            category = "REPORT";
+        }else if (reportTypeNum == Constant.REPORT_TYPE.ENTRY) {
+            category = "EVENT";
+        }
+        return category;
+    }
+
     public String getEntryType(int entryTypeNum) {
         String type = "";
         if (entryTypeNum == Constant.ENTRY__MAIL_TYPE.UNKNOW) {
@@ -156,6 +177,40 @@ public class WidgetService {
         if (newsTypeNum == Constant.NEWS_TYPE.MOVEUP) {
             color = "color:red";
         } else if (newsTypeNum == Constant.NEWS_TYPE.EVENT|| newsTypeNum == Constant.NEWS_TYPE.ENTRY) {
+            color = "color:#004984";
+        } else {
+            color = "color:#009a4c";
+        }
+        return color;
+    }
+
+    /**
+     * 20210317 楊レポート機能追加
+     * @param reportTypeNum
+     * @return
+     */
+    public String getReportColor(int reportTypeNum) {
+        String color = "";
+        if (reportTypeNum == Constant.REPORT_TYPE.MOVEUP) {
+            color = "background-color:red";
+        } else if (reportTypeNum == Constant.REPORT_TYPE.EVENT || reportTypeNum == Constant.REPORT_TYPE.ENTRY) {
+            color = "background-color:#004984";
+        } else {
+            color = "background-color:#009a4c";
+        }
+        return color;
+    }
+
+    /**
+     * 20210317　楊レポート機能追加
+     * @param reportTypeNum
+     * @return
+     */
+    public String getReportDetailColor(int reportTypeNum) {
+        String color = "";
+        if (reportTypeNum == Constant.REPORT_TYPE.MOVEUP) {
+            color = "color:red";
+        } else if (reportTypeNum == Constant.REPORT_TYPE.EVENT|| reportTypeNum == Constant.REPORT_TYPE.ENTRY) {
             color = "color:#004984";
         } else {
             color = "color:#009a4c";
