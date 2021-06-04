@@ -145,6 +145,27 @@ public class WidgetService {
         }
         return category;
     }
+    /**
+     * 林20210603レポート機能追加
+     * @param reporttestTypeNum
+     * @return
+     */
+
+    public String getReporttestType(int reporttestTypeNum) {
+        String category = "";
+        if (reporttestTypeNum == Constant.REPORTTEST_TYPE.UNKNOW) {
+            category = "不明";
+        } else if (reporttestTypeNum == Constant.REPORTTEST_TYPE.MOVEUP) {
+            category = "MOVEUP";
+        } else if (reporttestTypeNum == Constant.REPORTTEST_TYPE.EVENT) {
+            category = "EVENT";
+        } else if (reporttestTypeNum == Constant.REPORTTEST_TYPE.REPORT) {
+            category = "REPORT";
+        }else if (reporttestTypeNum == Constant.REPORTTEST_TYPE.ENTRY) {
+            category = "EVENT";
+        }
+        return category;
+    }
 
     public String getEntryType(int entryTypeNum) {
         String type = "";
@@ -200,6 +221,22 @@ public class WidgetService {
         }
         return color;
     }
+    /**
+     * 202100603 林レポート機能追加
+     * @param reporttestTypeNum
+     * @return
+     */
+    public String getReporttestColor(int reporttestTypeNum) {
+        String color = "";
+        if (reporttestTypeNum == Constant.REPORT_TYPE.MOVEUP) {
+            color = "background-color:red";
+        } else if (reporttestTypeNum == Constant.REPORT_TYPE.EVENT || reporttestTypeNum == Constant.REPORT_TYPE.ENTRY) {
+            color = "background-color:#004984";
+        } else {
+            color = "background-color:#009a4c";
+        }
+        return color;
+    }
 
     /**
      * 20210317　楊レポート機能追加
@@ -211,6 +248,22 @@ public class WidgetService {
         if (reportTypeNum == Constant.REPORT_TYPE.MOVEUP) {
             color = "color:red";
         } else if (reportTypeNum == Constant.REPORT_TYPE.EVENT|| reportTypeNum == Constant.REPORT_TYPE.ENTRY) {
+            color = "color:#004984";
+        } else {
+            color = "color:#009a4c";
+        }
+        return color;
+    }
+    /**
+     * 20210603　林レポート機能追加
+     * @param reporttestTypeNum
+     * @return
+     */
+    public String getReporttestDetailColor(int reporttestTypeNum) {
+        String color = "";
+        if (reporttestTypeNum == Constant.REPORT_TYPE.MOVEUP) {
+            color = "color:red";
+        } else if (reporttestTypeNum == Constant.REPORT_TYPE.EVENT|| reporttestTypeNum == Constant.REPORT_TYPE.ENTRY) {
             color = "color:#004984";
         } else {
             color = "color:#009a4c";

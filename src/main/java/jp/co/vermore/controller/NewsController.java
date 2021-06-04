@@ -25,7 +25,6 @@ import jp.co.vermore.common.mvc.BaseController;
 import jp.co.vermore.common.util.DateUtil;
 import jp.co.vermore.jsonparse.NewsJsonParse;
 import jp.co.vermore.service.NewsService;
-
 import javax.servlet.http.HttpServletRequest;
 
 /**

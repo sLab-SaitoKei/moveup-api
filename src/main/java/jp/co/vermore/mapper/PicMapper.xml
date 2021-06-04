@@ -182,6 +182,10 @@
   <delete id="deleteReportPicUrl">
     update pic set del_flg = #{delFlg} where item_id = #{itemId} and item_type = #{itemType}
   </delete>
+  <!--20210603 林追加-->
+  <delete id="deleteReporttestPicUrl">
+    update pic set del_flg = #{delFlg} where item_id = #{itemId} and item_type = #{itemType}
+  </delete>
 
   <select id="getStudioUrl" resultMap="PicResult">
     select

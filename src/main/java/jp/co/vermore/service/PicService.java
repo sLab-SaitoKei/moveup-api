@@ -224,6 +224,21 @@ public class PicService {
         int count = picMapper.deleteReportPicUrl(pic);
         return count;
     }
+    /**
+     * 202100603 林追加
+     * @param reporttestId
+     * @param type
+     * @return
+     */
+    public int deleteReporttestPicUrl(Long reporttestId, int type) {
+        Pic pic = new Pic();
+        pic.setItemId(reporttestId);
+        pic.setItemType((byte)type);
+        pic.setDelFlg(Boolean.TRUE);
+        int count = picMapper.deleteReporttestPicUrl(pic);
+        return count;
+    }
+
 
     public Pic getStudioUrl(int id) {
         Pic pic = picMapper.getStudioUrl(id);

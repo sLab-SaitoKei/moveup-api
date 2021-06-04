@@ -46,6 +46,8 @@
                             <li><a href="${pageContext.request.contextPath}/admin/news/list/">ニュース</a></li>
                             <%--20210317楊追加--%>
                             <li><a href="${pageContext.request.contextPath}/admin/report/list/">レポート</a></li>
+                            <%--20210603林追加--%>
+                            <li><a href="${pageContext.request.contextPath}/admin/reporttest/list/">レポートテスト</a></li>
                             <li><a href="${pageContext.request.contextPath}/admin/event/list/">イベント</a></li>
                             <li><a href="${pageContext.request.contextPath}/admin/entrymail/list/">応募メール</a></li>
                             <li><a href="${pageContext.request.contextPath}/admin/entry/list/">応募結果</a></li>

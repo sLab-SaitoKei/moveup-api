@@ -331,6 +331,17 @@ public class Constant {
         public final static Byte ENTRY = 4;
         public final static Byte STUDIO_REPORT = 5;
     }
+    /**
+     * 20210603　林追加
+     */
+    public static class REPORTTEST_TYPE {
+        public final static Byte UNKNOW = 0;
+        public final static Byte EVENT = 1;
+        public final static Byte MOVEUP = 2;
+        public final static Byte REPORT = 3;
+        public final static Byte ENTRY = 4;
+        public final static Byte STUDIO_REPORT = 5;
+    }
 
     public static class ENTRY__MAIL_TYPE {
         public final static Byte UNKNOW = 0;
