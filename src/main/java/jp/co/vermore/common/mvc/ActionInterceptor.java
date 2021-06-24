@@ -108,7 +108,10 @@ public class ActionInterceptor extends HandlerInterceptorAdapter {
 //            Spring3CorsFilter filter = handlerMethod.getMethod().getAnnotation(Spring3CorsFilter.class);
 //            if (filter != null ) {
 //            response.setHeader("Access-Control-Allow-Origin", "*");
-            response.setHeader("Access-Control-Allow-Origin", "http://localhost:9000");
+//            本地写法
+//            response.setHeader("Access-Control-Allow-Origin", "http://localhost:9000");
+//            aws写法
+            response.setHeader("Access-Control-Allow-Origin", "http://18.181.9.16");
             response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
             response.setHeader("Access-Control-Allow-Credentials", "true");
             response.setHeader("Access-Control-Max-Age", "3600");
