@@ -182,6 +182,12 @@
   <delete id="deleteReportPicUrl">
     update pic set del_flg = #{delFlg} where item_id = #{itemId} and item_type = #{itemType}
   </delete>
+
+  <!--20220613 saito追加-->
+  <delete id="deleteRamenPicUrl">
+    update pic set del_flg = #{delFlg} where item_id = #{itemId} and item_type = #{itemType}
+  </delete>
+
   <!--20210603 林追加-->
   <delete id="deleteReporttestPicUrl">
     update pic set del_flg = #{delFlg} where item_id = #{itemId} and item_type = #{itemType}

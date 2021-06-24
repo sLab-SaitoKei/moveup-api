@@ -145,6 +145,28 @@ public class WidgetService {
         }
         return category;
     }
+
+    /**
+     * saito20220613ラーメン機能追加
+     * @param ramenTypeNum
+     * @return
+     */
+    public String getRamenType(int ramenTypeNum) {
+        String category = "";
+        if (ramenTypeNum == Constant.RAMEN_TYPE.UNKNOW) {
+            category = "不明";
+        } else if (ramenTypeNum == Constant.RAMEN_TYPE.MOVEUP) {
+            category = "MOVEUP";
+        } else if (ramenTypeNum == Constant.RAMEN_TYPE.EVENT) {
+            category = "EVENT";
+        } else if (ramenTypeNum == Constant.RAMEN_TYPE.RAMEN) {
+            category = "NEWS";
+        }else if (ramenTypeNum == Constant.RAMEN_TYPE.ENTRY) {
+            category = "EVENT";
+        }
+        return category;
+    }
+    
     /**
      * 林20210603レポート機能追加
      * @param reporttestTypeNum
@@ -221,6 +243,24 @@ public class WidgetService {
         }
         return color;
     }
+
+    /**
+     * 20220613 satoラーメン機能追加
+     * @param ramenTypeNum
+     * @return
+     */
+    public String getRamenColor(int ramenTypeNum) {
+        String color = "";
+        if (ramenTypeNum == Constant.RAMEN_TYPE.MOVEUP) {
+            color = "background-color:red";
+        } else if (ramenTypeNum == Constant.RAMEN_TYPE.EVENT || ramenTypeNum == Constant.RAMEN_TYPE.ENTRY) {
+            color = "background-color:#004984";
+        } else {
+            color = "background-color:#009a4c";
+        }
+        return color;
+    }
+    
     /**
      * 202100603 林レポート機能追加
      * @param reporttestTypeNum
@@ -254,6 +294,24 @@ public class WidgetService {
         }
         return color;
     }
+
+    /**
+     * 20220613　saitoラーメン機能追加
+     * @param ramenTypeNum
+     * @return
+     */
+    public String getRamenDetailColor(int ramenTypeNum) {
+        String color = "";
+        if (ramenTypeNum == Constant.RAMEN_TYPE.MOVEUP) {
+            color = "color:red";
+        } else if (ramenTypeNum == Constant.RAMEN_TYPE.EVENT|| ramenTypeNum == Constant.RAMEN_TYPE.ENTRY) {
+            color = "color:#004984";
+        } else {
+            color = "color:#009a4c";
+        }
+        return color;
+    }
+    
     /**
      * 20210603　林レポート機能追加
      * @param reporttestTypeNum

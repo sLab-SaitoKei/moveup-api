@@ -331,6 +331,18 @@ public class Constant {
         public final static Byte ENTRY = 4;
         public final static Byte STUDIO_REPORT = 5;
     }
+
+    /**
+     * 20220613　saito追加
+     */
+    public static class RAMEN_TYPE {
+        public final static Byte UNKNOW = 0;
+        public final static Byte EVENT = 1;
+        public final static Byte MOVEUP = 2;
+        public final static Byte RAMEN = 3;
+        public final static Byte ENTRY = 4;
+        public final static Byte STUDIO_RAMEN = 5;
+    }
     /**
      * 20210603　林追加
      */
@@ -422,6 +434,8 @@ public class Constant {
         public final static Byte STUDIO_REPORT_DETAIL = 13;
         public final static Byte REPORT_TOP = 14;
         public final static Byte REPORT_FOOT = 15;
+        public final static Byte RAMEN_TOP = 16;
+        public final static Byte RAMEN_FOOT = 17;
     }
 
     public static class FREEPAPER_PIC_TYPE{

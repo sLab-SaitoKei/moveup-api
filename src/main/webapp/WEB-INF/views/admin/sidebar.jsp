@@ -48,8 +48,10 @@
                             <li><a href="${pageContext.request.contextPath}/admin/report/list/">レポート</a></li>
                             <%--20210603林追加--%>
                             <li><a href="${pageContext.request.contextPath}/admin/reporttest/list/">レポートテスト</a></li>
+                            <%--20220613saito追加--%>
+                            <li><a href="${pageContext.request.contextPath}/admin/ramen/list/">ラーメン</a></li>
                             <li><a href="${pageContext.request.contextPath}/admin/event/list/">イベント</a></li>
-                            <li><a href="${pageContext.request.contextPath}/admin/entrymail/list/">応募メール</a></li>
+                            <li><a href="${pageContext.request.contextPath}/admin/entry mail/list/">応募メール</a></li>
                             <li><a href="${pageContext.request.contextPath}/admin/entry/list/">応募結果</a></li>
                             <%--<li><a href="${pageContext.request.contextPath}/admin/rise/list/">RISE(保留)</a></li>--%>
                             <li><a href="${pageContext.request.contextPath}/admin/freepaper/list/">フリーペーパ</a></li>

@@ -224,6 +224,21 @@ public class PicService {
         int count = picMapper.deleteReportPicUrl(pic);
         return count;
     }
+
+    /**
+     * 20220613 saito追加
+     * @param ramenId
+     * @param type
+     * @return
+     */
+    public int deleteRamenPicUrl(Long ramenId, int type) {
+        Pic pic = new Pic();
+        pic.setItemId(ramenId);
+        pic.setItemType((byte)type);
+        pic.setDelFlg(Boolean.TRUE);
+        int count = picMapper.deleteRamenPicUrl(pic);
+        return count;
+    }
     /**
      * 202100603 林追加
      * @param reporttestId

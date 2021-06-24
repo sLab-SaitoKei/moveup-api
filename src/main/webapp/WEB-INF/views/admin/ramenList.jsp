@@ -94,7 +94,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>レポートテスト管理jenkins测试</h3>
+                        <h3>ラーメン管理</h3>
                     </div>
                 </div>
 
@@ -104,7 +104,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>レポートテスト
+                                <h2>ラーメン
                                     <small>検索結果</small>
                                 </h2>
                                 <div class="clearfix"></div>
@@ -115,9 +115,9 @@
                                 <div class="col-md-9 col-sm-9 col-xs-12"></div>
                                 <div class=" col-sm-1 col-sm-1 col-xs-12">
                                     <a class="btn btn-round btn-success"
-                                       href="${pageContext.request.contextPath}/admin/reporttest/regist/"
+                                       href="${pageContext.request.contextPath}/admin/ramen/regist/"
                                        style="width: 100px;" onclick="gotoRegist()"><span class="glyphicon glyphicon-plus"
-                                                                                          aria-hidden="true"></span>新規</a>
+                                                                   aria-hidden="true"></span>新規</a>
                                 </div>
                                 </p>
 
@@ -130,7 +130,7 @@
                                                 <option value="9">全部</option>
                                                 <option value="1">EVENT</option>
                                                 <option value="2">MOVEUP</option>
-                                                <option value="3">REPORTTEST</option>
+                                                <option value="3">NEWS</option>
                                             </select>
                                         </div>
                                         <label class="control-label col-md-1 col-sm-1 col-xs-12">日付</label>
@@ -165,7 +165,7 @@
                                 </form>
 
                                 <div class="table-responsive">
-                                    <table id="reporttestListTable" class="table table-striped jambo_table bulk_action">
+                                    <table id="ramenListTable" class="table table-striped jambo_table bulk_action">
                                         <thead>
                                         <tr class="headings">
                                             <th class="column-title" style="width: 5%;">カテゴリ</th>
@@ -203,10 +203,10 @@
         <!-- /footer content -->
     </div>
 </div>
-<div id="reporttestLoading" style="display: none" class="loading">
+<div id="ramenLoading" style="display: none" class="loading">
     <div class="loading-text">Processing...</div>
 </div>
-<div class="modal fade delete-reporttest-modal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade delete-ramen-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
 
@@ -311,12 +311,12 @@
         }
     });
 
-    var datatable = $('#reporttestListTable').DataTable({
+    var datatable = $('#ramenListTable').DataTable({
         dom:'lrtip',
         processing: true,
         serverSide: true,
         ajax: {
-            url: '/admin/reporttest/list/',
+            url: '/admin/ramen/list/',
             type: 'POST',
             data: function (data) {
                 data.type = $('#type').val();
@@ -341,7 +341,7 @@
                         return '<button type="button" class="btn btn-danger" style="width: 80px;">MOVEUP</button>';
                     }
                     if(full.type==3){
-                        return '<button type="button" class="btn btn-success" style="width: 80px;">REPORTTEST</button>';
+                        return '<button type="button" class="btn btn-success" style="width: 80px;">NEWS</button>';
                     }
                     if(full.type==0){
                         return '<button type="button" class="btn btn-primary" style="width: 80px;">不明</button>';
@@ -388,7 +388,7 @@
                         return '<a class="btn btn-primary buttonDisabled" style="font-size: inherit; opacity: .65;" href="javascript:void(0)" onclick="('+full.id+','+full.type+')">応募</a>';
                     }
                     if(full.type==3){
-                        //     return '<button type="button" class="btn btn-success" style="width: 80px;">REPORTTEST</button>';
+                    //     return '<button type="button" class="btn btn-success" style="width: 80px;">RAMEN</button>';
                     }
                     return "";
                 },
@@ -419,40 +419,40 @@
         language: {url: "/static/admin/build/json/japanese.json"}
     });
 
-    var currDeleteReporttestId = 0;
+    var currDeleteRamenId = 0;
 
     function searchData() {
         datatable.ajax.reload();
     }
 
     function gotoDelete(id) {
-        currDeleteReporttestId = id;
-        $('.delete-reporttest-modal').modal("show");
+        currDeleteRamenId = id;
+        $('.delete-ramen-modal').modal("show");
     }
 
     function gotoUpdate(id) {
-        $('#reporttestLoading').show();
-        window.location.href = '${pageContext.request.contextPath}/admin/reporttest/edit/' + id + '/';
+        $('#ramenLoading').show();
+        window.location.href = '${pageContext.request.contextPath}/admin/ramen/edit/' + id + '/';
     }
 
     function gotoRegistEntryMail(id,type) {
-        $('#reporttestLoading').show();
+        $('#ramenLoading').show();
         window.location.href =  '${pageContext.request.contextPath}/admin/entrymail/regist/'+ id + '/'+ type + '/';
     }
 
     function gotoRegist() {
-        $('#reporttestLoading').show();
-        window.location.href =  '${pageContext.request.contextPath}/admin/reporttest/regist/';
+        $('#ramenLoading').show();
+        window.location.href =  '${pageContext.request.contextPath}/admin/ramen/regist/';
     }
 
     function confirmDeleteClick() {
-        $('.delete-reporttest-modal').modal("hide");
-        $('#reporttestLoading').show();
+        $('.delete-ramen-modal').modal("hide");
+        $('#ramenLoading').show();
         var form = $("<form></form>");
-        form.attr('action', '${pageContext.request.contextPath}/admin/reporttest/delete/');
+        form.attr('action', '${pageContext.request.contextPath}/admin/ramen/delete/');
         form.attr('method', 'post');
         var input1 = $("<input type='hidden' name='id'/>");
-        input1.attr('value', currDeleteReporttestId);
+        input1.attr('value', currDeleteRamenId);
         form.append(input1);
         form.appendTo("body");
         form.css('display', 'none');

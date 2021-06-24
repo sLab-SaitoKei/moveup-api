@@ -22,6 +22,10 @@ public interface PicMapper {
 
     //20210317 楊追加
     int deleteReportPicUrl(Pic pic);
+
+    //20220613 saito追加
+    int deleteRamenPicUrl(Pic pic);
+
     //20210603 林追加
     int deleteReporttestPicUrl(Pic pic);
     int insertPicUrl(Pic entity);
