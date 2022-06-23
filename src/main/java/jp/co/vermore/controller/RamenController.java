@@ -83,7 +83,7 @@ public class RamenController extends BaseController {
         return jsonObject;
     }
 
-    //eg:http://localhost:8081/moveup_war/api/ramen/detail/VfWfbJc3z2/
+    //eg:http://localhost:8081/moveup_war/api/ramen/detail/VfWfbJc3z2/ 111111111111111111111111111111111111
     @RequestMapping(value = "/api/ramen/detail/{uuid}/", method = RequestMethod.GET)
     @ResponseBody
     public JsonObject getRamenDetailList(@PathVariable String uuid) {

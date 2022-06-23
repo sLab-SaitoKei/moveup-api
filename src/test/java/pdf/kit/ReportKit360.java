@@ -6,6 +6,7 @@ import jp.co.vermore.kit.component.PDFKit;
 import jp.co.vermore.kit.component.chart.model.XYLine;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.exception.ExceptionUtils;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
